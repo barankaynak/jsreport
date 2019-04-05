@@ -47,8 +47,9 @@ RUN apt-get update && \
     rm -rf /src/*.deb
 
 VOLUME ["/jsreport"]
-USER jsreport
 RUN mkdir -p /app
+RUN chown jsreport /newfolder
+USER jsreport
 WORKDIR /app
 
 # the chrome was already installed from apt-get
