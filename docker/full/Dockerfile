@@ -84,7 +84,7 @@ RUN node editConfig.js
 
 ADD run.sh /app/run.sh
 COPY . /app
-
+RUN ["chmod", "+x", "/app/run.sh"]
 ENV PATH "$PATH:/fop-2.1"
 ENV NODE_ENV production
 ENV electron:strategy electron-ipc
