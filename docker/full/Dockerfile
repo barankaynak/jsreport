@@ -2,8 +2,8 @@ FROM ubuntu:xenial
 # not using ubuntu:bionic because phantomjs 1.9.8 does not work there
 # (it contains a newer version of OpenSSL which can not be used with phantomjs)
 EXPOSE 5488
-RUN adduser --disabled-password --gecos '' newuser \
-    && adduser newuser sudo \
+RUN adduser --disabled-password --gecos '' jsreport \
+    && adduser jsreport sudo \
     && echo '%sudo ALL=(ALL:ALL) ALL' >> /etc/sudoers
 USER jsreport
 RUN apt-get update && \
