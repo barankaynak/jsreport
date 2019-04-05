@@ -2,7 +2,9 @@ FROM ubuntu:xenial
 # not using ubuntu:bionic because phantomjs 1.9.8 does not work there
 # (it contains a newer version of OpenSSL which can not be used with phantomjs)
 EXPOSE 5488
-RUN  useradd jsreport && echo "jsreport:jsreport" | chpasswd && adduser jsreport sudo
+RUN adduser --disabled-password --gecos '' newuser \
+    && adduser newuser sudo \
+    && echo '%sudo ALL=(ALL:ALL) ALL' >> /etc/sudoers
 USER jsreport
 RUN apt-get update && \
     apt-get install -y --no-install-recommends libgconf-2-4 gnupg git curl wget ca-certificates && \
