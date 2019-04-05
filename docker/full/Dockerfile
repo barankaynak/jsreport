@@ -49,7 +49,6 @@ RUN apt-get update && \
 VOLUME ["/jsreport"]
 RUN mkdir -p /app
 RUN chown jsreport /app
-USER jsreport
 WORKDIR /app
 
 # the chrome was already installed from apt-get
@@ -96,5 +95,5 @@ ENV phantom:strategy phantom-server
 ENV templatingEngines:strategy http-server
 ENV chrome_launchOptions_executablePath google-chrome-unstable
 ENV chrome_launchOptions_args --no-sandbox,--disable-dev-shm-usage
-
+USER jsreport
 CMD ["bash", "/app/run.sh"]
