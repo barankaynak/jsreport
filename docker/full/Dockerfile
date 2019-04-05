@@ -5,7 +5,8 @@ EXPOSE 5488
 RUN adduser --disabled-password --gecos '' jsreport \
     && adduser jsreport sudo \
     && echo '%sudo ALL=(ALL:ALL) ALL' >> /etc/sudoers
-USER jsreport
+
+USER root
 RUN apt-get update && \
     apt-get install -y --no-install-recommends libgconf-2-4 gnupg git curl wget ca-certificates && \
     # phantom/electron
@@ -46,7 +47,7 @@ RUN apt-get update && \
     rm -rf /src/*.deb
 
 VOLUME ["/jsreport"]
-
+USER jsreport
 RUN mkdir -p /app
 WORKDIR /app
 
