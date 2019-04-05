@@ -46,8 +46,9 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/* && \
     rm -rf /src/*.deb
 
-VOLUME ["/jsreport"]
+RUN mkdir -p /jsreport
 RUN chown jsreport /jsreport
+VOLUME ["/jsreport"]
 RUN mkdir -p /app
 RUN chown jsreport /app
 WORKDIR /app
