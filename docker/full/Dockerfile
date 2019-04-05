@@ -48,7 +48,7 @@ RUN apt-get update && \
 
 VOLUME ["/jsreport"]
 RUN mkdir -p /app
-RUN chown jsreport /newfolder
+RUN chown jsreport /app
 USER jsreport
 WORKDIR /app
 
