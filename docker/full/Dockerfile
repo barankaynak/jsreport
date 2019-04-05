@@ -47,6 +47,7 @@ RUN apt-get update && \
     rm -rf /src/*.deb
 
 VOLUME ["/jsreport"]
+RUN chown jsreport /jsreport
 RUN mkdir -p /app
 RUN chown jsreport /app
 WORKDIR /app
